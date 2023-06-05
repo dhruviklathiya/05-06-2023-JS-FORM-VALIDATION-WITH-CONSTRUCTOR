@@ -11,19 +11,17 @@ const tbl_base = `<tr>
 function check() {
     checkName('first_name', 'first_name_span');
     checkName('last_name', 'last_name_span');
-    // Particular name checking
-    // check_firstname();
-    // check_lastname();
     check_mobile();
     check_email();
     check_gender();
+    check_date();
     object_new();
 }
 function checkName(fieldId, spanId) {
     let name = document.getElementById(fieldId).value;
     if (name != "") {
         if (isNaN(name) != 1) {
-            document.getElementById(spanId).style.color = "Yellow";
+            document.getElementById(spanId).style.color = "Red";
             document.getElementById(spanId).innerHTML = "Name cannot be a numeric value";
         } else {
             let nameLength = name.length;
@@ -32,74 +30,21 @@ function checkName(fieldId, spanId) {
                 document.getElementById(spanId).innerHTML = "Name is valid";
                 return true;
             } else {
-                document.getElementById(spanId).style.color = "Yellow";
+                document.getElementById(spanId).style.color = "Red";
                 document.getElementById(spanId).innerHTML = "Name must be between 4 to 9 characters";
             }
         }
     } else {
-        document.getElementById(spanId).style.color = "Yellow";
+        document.getElementById(spanId).style.color = "Red";
         document.getElementById(spanId).innerHTML = "Please fill this field";
     }
 }
-// Particular name checking method
-// function check_firstname() {
-//     let fName = document.getElementById('first_name').value;
-//     //  console.log(fName); // checking value 
-//     if (fName != "") {
-//         if (isNaN(fName) != 1) {
-//             document.getElementById('first_name_span').style.color = "Yellow";
-//             document.getElementById('first_name_span').innerHTML = "First name cannot be numeric value";
-//         }
-//         else {
-//             let fName_length = fName.length;
-//             if (fName_length > 3 && fName_length < 10) {
-//                 document.getElementById('first_name_span').style.color = "Green";
-//                 document.getElementById('first_name_span').innerHTML = "First name is valid";
-//                 return true;
-//             }
-//             else {
-//                 document.getElementById('first_name_span').style.color = "Yellow";
-//                 document.getElementById('first_name_span').innerHTML = "First name must be between 4 to 9 characters";
-//             }
-//         }
-//     }
-//     else {
-//         document.getElementById('first_name_span').style.color = "Yellow";
-//         document.getElementById('first_name_span').innerHTML = "Please fill this field";
-//     }
-// }
-// function check_lastname() {
-//     let lName = document.getElementById('last_name').value;
-//     //  console.log(lName); // checking value 
-//     if (lName != "") {
-//         if (isNaN(lName) != 1) {
-//             document.getElementById('last_name_span').style.color = "Yellow";
-//             document.getElementById('last_name_span').innerHTML = "Last name cannot be numeric value";
-//         }
-//         else {
-//             let lName_length = lName.length;
-//             if (lName_length > 3 && lName_length < 10) {
-//                 document.getElementById('last_name_span').style.color = "Green";
-//                 document.getElementById('last_name_span').innerHTML = "Last name is valid";
-//                 return true;
-//             }
-//             else {
-//                 document.getElementById('last_name_span').style.color = "Yellow";
-//                 document.getElementById('last_name_span').innerHTML = "Last name must be between 4 to 9 characters";
-//             }
-//         }
-//     }
-//     else {
-//         document.getElementById('last_name_span').style.color = "Yellow";
-//         document.getElementById('last_name_span').innerHTML = "Please fill this field";
-//     }
-// }
 function check_mobile() {
     let mobile_val = document.getElementById('mobile_number').value;
     if (mobile_val != "") {
         if (isNaN(mobile_val)) {
             // not valid
-            document.getElementById('mobile_span').style.color = "Yellow";
+            document.getElementById('mobile_span').style.color = "Red";
             document.getElementById('mobile_span').innerHTML = "Mobile number must be numeric value";
         }
         else {
@@ -110,32 +55,51 @@ function check_mobile() {
                 return true;
             }
             else {
-                document.getElementById('mobile_span').style.color = "Yellow";
+                document.getElementById('mobile_span').style.color = "Red";
                 document.getElementById('mobile_span').innerHTML = "Mobile number must contain 10 digits";
             }
         }
     }
     else {
-        document.getElementById('mobile_span').style.color = "Yellow";
+        document.getElementById('mobile_span').style.color = "Red";
         document.getElementById('mobile_span').innerHTML = "Please fill this field";
     }
 }
 function check_email() {
-    let email_value = document.getElementById('email_id').value;
-    if (email_value != "") {
+  let email_value = document.getElementById('email_id').value;
+  let emailRegex = /^[a-z0-9]+@gmail.com$/;
+  if(email_value != ""){
+    if(emailRegex.test(email_value)){
         document.getElementById('email_span').style.color = "Green";
         document.getElementById('email_span').innerHTML = "Email is valid";
         return true;
-    }
-    else {
-        document.getElementById('email_span').style.color = "Yellow";
-        document.getElementById('email_span').innerHTML = "Please fill this field";
-    }
+      }
+      else {
+            document.getElementById('email_span').style.color = "Red";
+            document.getElementById('email_span').innerHTML = "Email must contain '@' & '.' & domain name";
+      }
+  }
+  else{
+            document.getElementById('email_span').style.color = "Red";
+            document.getElementById('email_span').innerHTML = "Please fill this field";
+  }
 }
 function check_gender() {
     let gender_value = document.querySelector('input[name = Gender]:checked').value;
     return true;
 }
+function check_date(){
+    let date_value = document.getElementById('birth_date').value;
+    if(date_value != ""){
+        document.getElementById('birth_span').style.color = "Green";
+        document.getElementById('birth_span').innerHTML = "Input is valid";       
+        return true;
+    }
+    else{
+        document.getElementById('birth_span').style.color = "Red";
+        document.getElementById('birth_span').innerHTML = "Please fill this field";       
+    }
+}   
 class Person {
     constructor(fName, lName, mobile_val, email_value, gender_value, birth_value) {
         this.Fullname = fName + " " + lName;
@@ -152,7 +116,7 @@ function object_push(fName, lName, mobile_val, email_value, gender_value, birth_
     alert("Data added");
 }
 function object_new() {
-    if (checkName('first_name', 'first_name_span') && checkName('last_name', 'last_name_span') && check_mobile() && check_email() && check_gender()) {
+    if (checkName('first_name', 'first_name_span') && checkName('last_name', 'last_name_span') && check_mobile() && check_email() && check_gender() && check_date()) {
         let fName = document.getElementById('first_name').value;
         let lName = document.getElementById('last_name').value;
         let mobile_val = document.getElementById('mobile_number').value;
