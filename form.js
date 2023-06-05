@@ -76,7 +76,7 @@ function check_email() {
       }
       else {
             document.getElementById('email_span').style.color = "Red";
-            document.getElementById('email_span').innerHTML = "Email must contain '@' & '.' & domain name";
+            document.getElementById('email_span').innerHTML = "Email must contain @gmail.com";
       }
   }
   else{
