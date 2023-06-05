@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-box">
+        <form>
+            <div class="user-box">
+                <input id="first_name" type="text" required>
+                <span class="span_edit" id="first_name_span"></span>
+                <label>First Name</label>
+            </div>
+            <div class="user-box">
+                <input id="last_name" type="text" required>
+                <span class="span_edit" id="last_name_span"></span>
+                <label>Last Name</label>
+            </div>
+            <div class="user-box gen_main">
+                <p>Gender</p>
+                <div class="gender">
+                    <div class="gen_input_wrap">Male<input id="Gender_1" name="Gender" type="radio" value="Male" checked required></div>
+                    <div class="gen_input_wrap">Female<input id="Gender_2" name="Gender" type="radio" value="Female" required></div>
+                    <div class="gen_input_wrap">Others<input id="Gender_3" name="Gender" type="radio" value="Others" required></div>
+                </div>
+                <span class="span_edit" id="gen_span"></span>
+            </div>
+            <div class="user-box">
+                <input id="mobile_number" type="tel" minlength="10" maxlength="10" required>
+                <span class="span_edit" id="mobile_span"></span>
+                <label>Mobile Number</label>
+            </div>
+            <div class="user-box">
+                <input id="email_id" type="email" required>
+                <span class="span_edit" id="email_span"></span>
+                <label>Email</label>
+            </div>
+            <div class="user-box birth_div">
+                <p>Birthdate [dd/mm/yyyy]</p>
+                <input id="birth_date" type="date" class="input_birth" value="0001-01-01" required>
+            </div>
+            <center>
+                <a href="#">
+                    <span></span>
+                    <button type="submit" onclick="check()">ADD</button>
+                </a>
+                <a href="#">
+                    <span></span>
+                    <button type="submit" onclick="show_data()">VIEW</button>
+                </a>
+                <a href="#">
+                    <span></span>
+                    <button type="submit" onclick="filter_data()">AFTER 20<sup>th</sup> CENTURY</button>
+                </a>
+                <a href="#">
+                    <span></span>
+                    <button type="button" onclick="clear_input()">CLEAR INPUT</button>
+                </a>
+            </center>
+        </form>
+    </div>
+    <table style="display: none;" id="table__" align="center" border="0">
+        <tbody id="table_data"></tbody>
+    </table>
+    <script type="text/javascript" src="form.js"></script>
+</body>
+
+</html>
