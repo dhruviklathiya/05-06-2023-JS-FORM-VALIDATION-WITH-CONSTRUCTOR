@@ -11,6 +11,9 @@ const tbl_base = `<tr>
 function check() {
     checkName('first_name', 'first_name_span');
     checkName('last_name', 'last_name_span');
+    // Particular name checking
+    // check_firstname();
+    // check_lastname();
     check_mobile();
     check_email();
     check_gender();
@@ -45,6 +48,59 @@ function checkName(fieldId, spanId) {
         console.log("Invalid input !!!");
     }
 }
+// Particular name checking method
+// function check_firstname() {
+//     let fName = document.getElementById('first_name').value;
+//     //  console.log(fName); // checking value 
+//     if (fName != "") {
+//         if (isNaN(fName) != 1) {
+//             document.getElementById('first_name_span').style.color = "Red";
+//             document.getElementById('first_name_span').innerHTML = "First name cannot be numeric value";
+//         }
+//         else {
+//             let fName_length = fName.length;
+//             if (fName_length > 3 && fName_length < 10) {
+//                 document.getElementById('first_name_span').style.color = "Green";
+//                 document.getElementById('first_name_span').innerHTML = "First name is valid";
+//                 return true;
+//             }
+//             else {
+//                 document.getElementById('first_name_span').style.color = "Red";
+//                 document.getElementById('first_name_span').innerHTML = "First name must be between 4 to 9 characters";
+//             }
+//         }
+//     }
+//     else {
+//         document.getElementById('first_name_span').style.color = "Red";
+//         document.getElementById('first_name_span').innerHTML = "Please fill this field";
+//     }
+// }
+// function check_lastname() {
+//     let lName = document.getElementById('last_name').value;
+//     //  console.log(lName); // checking value 
+//     if (lName != "") {
+//         if (isNaN(lName) != 1) {
+//             document.getElementById('last_name_span').style.color = "Red";
+//             document.getElementById('last_name_span').innerHTML = "Last name cannot be numeric value";
+//         }
+//         else {
+//             let lName_length = lName.length;
+//             if (lName_length > 3 && lName_length < 10) {
+//                 document.getElementById('last_name_span').style.color = "Green";
+//                 document.getElementById('last_name_span').innerHTML = "Last name is valid";
+//                 return true;
+//             }
+//             else {
+//                 document.getElementById('last_name_span').style.color = "Red";
+//                 document.getElementById('last_name_span').innerHTML = "Last name must be between 4 to 9 characters";
+//             }
+//         }
+//     }
+//     else {
+//         document.getElementById('last_name_span').style.color = "Red";
+//         document.getElementById('last_name_span').innerHTML = "Please fill this field";
+//     }
+// }
 function check_mobile() {
     let mobile_val = document.getElementById('mobile_number').value;
     if (mobile_val != "") {
