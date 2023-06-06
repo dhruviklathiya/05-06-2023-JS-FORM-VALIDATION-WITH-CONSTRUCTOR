@@ -11,9 +11,6 @@ const tbl_base = `<tr>
 function check() {
     checkName('first_name', 'first_name_span');
     checkName('last_name', 'last_name_span');
-    // Particular name checking
-    // check_firstname();
-    // check_lastname();
     check_mobile();
     check_email();
     check_gender();
@@ -136,11 +133,6 @@ function object_new() {
     }
 }
 function show_data() {
-    // Checking output in console
-    // for (let i = 0; i < data.length; i++) {
-    //     console.log(data[i]);
-    // }
-    // check(); if we want to direct add data using same button
     document.getElementById('table__').style.display = "block";
     let tbl = "";
     tbl += tbl_base;
@@ -163,7 +155,6 @@ function show_data() {
     }
 }
 function filter_data() {
-    // check(); if we want to direct add data using same button
     filter_data_ = [];
     data.filter(function year_filter(val, index, arr) {
         if (data[index].Year_value >= 2000) {
