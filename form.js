@@ -19,24 +19,30 @@ function check() {
 }
 function checkName(fieldId, spanId) {
     let name = document.getElementById(fieldId).value;
-    if (name != "") {
-        if (isNaN(name) != 1) {
-            document.getElementById(spanId).style.color = "Red";
-            document.getElementById(spanId).innerHTML = "Name cannot be a numeric value";
-        } else {
-            let nameLength = name.length;
-            if (nameLength > 3 && nameLength < 10) {
-                document.getElementById(spanId).style.color = "Green";
-                document.getElementById(spanId).innerHTML = "Name is valid";
-                return true;
-            } else {
+    try{
+        if (name != "") {
+            if (isNaN(name) != 1) {
                 document.getElementById(spanId).style.color = "Red";
-                document.getElementById(spanId).innerHTML = "Name must be between 4 to 9 characters";
+                document.getElementById(spanId).innerHTML = "Name cannot be a numeric value";
+            } else {
+                let nameLength = name.length;
+                if (nameLength > 3 && nameLength < 10) {
+                    document.getElementById(spanId).style.color = "Green";
+                    document.getElementById(spanId).innerHTML = "Name is valid";
+                    return true;
+                } else {
+                    document.getElementById(spanId).style.color = "Red";
+                    document.getElementById(spanId).innerHTML = "Name must be between 4 to 9 characters";
+                }
             }
+        } 
+        else {
+            document.getElementById(spanId).style.color = "Red";
+            document.getElementById(spanId).innerHTML = "Please fill this field";
         }
-    } else {
-        document.getElementById(spanId).style.color = "Red";
-        document.getElementById(spanId).innerHTML = "Please fill this field";
+    }
+    catch(err_sentence){
+        console.log("Invalid input !!!");
     }
 }
 function check_mobile() {
