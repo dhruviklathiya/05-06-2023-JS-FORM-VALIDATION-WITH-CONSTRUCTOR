@@ -1,5 +1,6 @@
 let data = [];
 let filter_data_ = [];
+// tbl_base is common in both show_data() & filter_data() function
 const tbl_base = `<tr>
                         <th>Full Name</th>
                         <th>Gender</th>
@@ -22,6 +23,7 @@ function check() {
 }
 function checkName(fieldId, spanId) {
     let name = document.getElementById(fieldId).value;
+    // will try everything in try block and if error occurs it will execute catch block
     try{
         if (name != "") {
             if (isNaN(name) != 1) {
@@ -162,6 +164,7 @@ function check_date(){
         document.getElementById('birth_span').innerHTML = "Please fill this field";       
     }
 }   
+// Creating class [blueprint of object]
 class Person {
     constructor(fName, lName, mobile_val, email_value, gender_value, birth_value) {
         this.Fullname = fName + " " + lName;
@@ -194,8 +197,10 @@ function show_data() {
     //     console.log(data[i]);
     // }
     // check(); if we want to direct add data using same button
+    // Make table tag visible
     document.getElementById('table__').style.display = "block";
     let tbl = "";
+    // Default data for tbl tbl_base
     tbl += tbl_base;
         data.map((val, index, arr) => {
             tbl += `<tr>
@@ -223,8 +228,10 @@ function filter_data() {
             filter_data_.push(data[index]);
         }
     })
+    // Make table tag visible
     document.getElementById('table__').style.display = "block";
     let tbl = "";
+    // Default data for tbl tbl_base
     tbl += tbl_base;
     filter_data_.map((val, index, arr) => {
         tbl += `
@@ -246,6 +253,7 @@ function filter_data() {
         document.getElementById('table_data').innerHTML = tbl;
     }
 }
+// Making process easy for user to input multiple data
 function clear_input() {
     document.getElementById('first_name').value = "";
     document.getElementById('last_name').value = "";
